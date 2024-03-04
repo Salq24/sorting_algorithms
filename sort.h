@@ -4,6 +4,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * enum m_bool - Boolean values numbering.
+ * @false: is 0.
+ * @true: is 1.
+ */
+typedef enum m_bool
+{
+	false = 0,
+	true
+}m_bool;
+
 
 /**
  * struct listint_s - Doubly linked list node

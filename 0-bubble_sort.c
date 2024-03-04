@@ -24,18 +24,24 @@ void swap_elem(int *elem1, int *elem2)
 
 void bubble_sort(int *array, size_t size)
 {
-	for (size_t x = 0; x < size - 1; x++)
-	{
-		for (size_t y = 0; y < size - x - 1; y++)
-		{
-			if (array[y] > array[y + 1])
-			{
-				swap_elem(&array[y], &array[y + 1]);
-				print_array(array, size);
-			}
-		}
-	}
+        m_bool chek = false;
+        size_t x, y = size;
+        
+        if (array == NULL || size <= 1)
+                return;
+
+        while (chek == false)
+        {
+                chek = true;
+                 for (x = 0; x < y - 1; x++)
+                 {
+                    if (array[x] > array[x + 1])
+                    {
+                        swap_elem(array + 1, array + x + 1);
+                        print_array(array, size);
+                        chek = false;
+                    }
+                 }
+                 y--;
+        }
 }
-
-
-
