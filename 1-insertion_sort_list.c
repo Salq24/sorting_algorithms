@@ -1,23 +1,17 @@
-#import "sort.h"
+#include "sort.h"
 
 /**
  * node_swp - swaps two nodes of a doubly linked list
- * @hd: pointer to the head
  * @nd1: first node
  * @nd2: node 2
  */
 
-void node_swp(listint_t **hd, listint_t *nd1, listint_t *nd2)
+void node_swp(listint_t *nd1, listint_t *nd2)
 {
-	if (nd1 == nd2)
-		return;
 
-	if (nd1->prev != NULL)
-		nd1->prev->next = nd1;
-	else
-		*hd = nd2;
-
-	if (nd2->next != NULL)
+	if (nd1->prev)
+		nd1->prev->next = nd2;
+	if (nd2->next)
 		nd2->next->prev = nd1;
 
 	nd1->next = nd2->next;
@@ -35,21 +29,28 @@ void node_swp(listint_t **hd, listint_t *nd1, listint_t *nd2)
 
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *curr, *inst;
+
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	listint_t *curr, *inst, *temp;
-
-	for (curr = (*list)->next; curr != NULL; curr = temp)
+	curr = (*list)->next;
+	while (curr)
 	{
-		temp = current->next;
+		inst = curr;
 
-		inst = curr->prev;
+		curr = inst->next;
 
-		while (inst != NULL && curr->n < inst->n)
+		while (inst != NULL && inst->prev)
 		{
-			node_swap(list, &inst, curr);
-			print_list(*list);
+			if (inst->prev->n > inst->n)
+			{
+				node_swp(inst->prev, inst);
+				if (!inst->prev)
+					*list = inst;
+			print_list((const listint_t *)*list);
+			}
+			else
+				inst = inst->prev;
 		}
 	}
 }
-
