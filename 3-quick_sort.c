@@ -25,6 +25,7 @@ void swap_el(int *array, size_t size, int *elem1, int *elem2)
  * @size: array size
  * @low: range low index
  * @high: range hogh index
+ * Return: ...
  */
 
 size_t lom_partition(int *array, size_t size, ssize_t low, ssize_t high)
